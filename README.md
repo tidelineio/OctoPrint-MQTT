@@ -195,7 +195,7 @@ plugins:
 
 ## Helpers
 
-### mqtt_publish(topic, payload, retained=False, qos=0, allow_queueing=False, raw_data=False)
+### mqtt_publish(topic, payload, retained=False, qos=1, allow_queueing=False, raw_data=False)
 
 Publishes `payload` to `topic`. If `retained` is set to `True`, message will be flagged to be retained by the
 broker. The QOS setting can be overridden with the `qos` parameter.
@@ -208,7 +208,7 @@ stored internally and published upon connection to the broker.
 Returns `True` if the message was accepted to be published by the MQTT plugin, `False` if the message could not
 be accepted (e.g. due to the plugin being not connected to the broker and queueing not being allowed).
 
-### mqtt_publish_with_timestamp(topic, payload, retained=False, qos=0, allow_queueing=False, timestamp=None)
+### mqtt_publish_with_timestamp(topic, payload, retained=False, qos=1, allow_queueing=False, timestamp=None)
 
 Publishes `payload` to `topic` including a timestamp. `payload` *must* be a Python `dict` and will be extended by a
 property `_timestamp` set to the provided `timestamp` or - if unset - the current timestamp.

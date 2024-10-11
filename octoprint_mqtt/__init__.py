@@ -423,7 +423,7 @@ class MqttPlugin(octoprint.plugin.SettingsPlugin,
             time.sleep(1)
             self._mqtt.loop_stop(force=True)
 
-    def mqtt_publish_with_timestamp(self, topic, payload, retained=None, qos=0, allow_queueing=False, timestamp=None):
+    def mqtt_publish_with_timestamp(self, topic, payload, retained=None, qos=1, allow_queueing=False, timestamp=None):
         if not payload:
             payload = dict()
         if not isinstance(payload, dict):
@@ -440,7 +440,7 @@ class MqttPlugin(octoprint.plugin.SettingsPlugin,
 
         return self.mqtt_publish(topic, payload, retained=retained, qos=qos, allow_queueing=allow_queueing)
 
-    def mqtt_publish(self, topic, payload, retained=None, qos=0, allow_queueing=False, raw_data=False):
+    def mqtt_publish(self, topic, payload, retained=None, qos=1, allow_queueing=False, raw_data=False):
         if not (isinstance(payload, six.string_types) or raw_data):
             payload = json.dumps(payload)
 
